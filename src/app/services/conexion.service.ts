@@ -53,4 +53,10 @@ export class ConexionService {
     // eliminamos el item
     this.itemDoc.delete();
   }
+
+  // funcion para editar item que recibimos desde lista.componentes.ts
+  editarItem(item) {
+    this.itemDoc = this.afs.doc<Item>(`items/${item.id}`);
+    this.itemDoc.update(item);
+  }
 }
