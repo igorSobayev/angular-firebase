@@ -22,4 +22,10 @@ export class ListaComponent implements OnInit {
   ngOnInit() {
   }
 
+  // funcion para eliminar el item seleccionad
+  eliminar(item) {
+    // le pasamos al método de nuestra conexión el item seleccionado
+    this.conexion.eliminarItem(item);
+  }
+
 }

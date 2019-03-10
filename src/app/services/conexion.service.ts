@@ -1,7 +1,7 @@
 // Conexión a la bd de firebase
 
 // Imports para las conexiones
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
@@ -18,6 +18,9 @@ export class ConexionService {
 
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
+
+  // document para eliminar items
+  private itemDoc: AngularFirestoreDocument<Item>;
 
   constructor(private afs: AngularFirestore) {
     // esta variable va a traer una colección llamada items (nuestra tabla de la bd)
@@ -41,5 +44,13 @@ export class ConexionService {
 
   agregarItem(item: Item) {
     this.itemsCollection.add(item);
+  }
+
+  // function para eliminar un item
+  eliminarItem(item) {
+    // guardamos en nuestro itemDoc el item seleccionado para eliminar
+    this.itemDoc = this.afs.doc<Item>(`items/${item.id}`);
+    // eliminamos el item
+    this.itemDoc.delete();
   }
 }

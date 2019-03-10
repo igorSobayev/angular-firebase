@@ -1,3 +1,4 @@
-<div class="alert alert-warning" role="alert" *ngFor="let item of items, index as i">
+<div class="alert alert-warning" role="alert" *ngFor="let item of items">
   {{ item.name }} - {{ item.id }}
+  <div class="float-right" (click)="eliminar(item)"> <i class="far fa-trash-alt"></i></div>
 </div>
