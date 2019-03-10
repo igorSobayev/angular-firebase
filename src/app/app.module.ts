@@ -11,9 +11,16 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+// Servicios
+import { ConexionService } from './services/conexion.service';
+import { ListaComponent } from './components/lista/lista.component';
+import { ListaAddComponent } from './components/lista-add/lista-add.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListaComponent,
+    ListaAddComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ ConexionService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
